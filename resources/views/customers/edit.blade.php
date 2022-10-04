@@ -1,20 +1,21 @@
 @extends('layout')
 
-@section('title', 'Add New Customers')
+@section('title', 'Edit Customer Details')
 
 @section('content')
 <div class="row">
     <div class="col-12">
-        <h1>Add Customers</h1>
+        <h1>{{ $customer->name }}</h1>
     </div>
 </div>
 
 <div class="row">
     <div class="col-12">
-        <form action="{{ url('/customers') }}" method="POST" class="pb-3">
+        <form action="{{ url('/customers\/') . $customer->id }}" method="POST" class="pb-3">
+            @method('PATCH')
             @include('customers.form')
 
-            <button type="submit" class="btn btn-outline-success">Add Customer</button>
+            <button type="submit" class="btn btn-outline-success">Save Customer</button>
         </form>
     </div>
 </div>

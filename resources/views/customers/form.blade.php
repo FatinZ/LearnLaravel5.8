@@ -1,7 +1,7 @@
 @csrf
 <div class="form-group mb-3">
     <label for="name">Name</label>
-    <input type="text" name="name" value="{{ old('name') }}" class="form-control">
+    <input type="text" name="name" value="{{ old('name') ?? $customer->name }}" class="form-control">
 </div>
 @error('name')
     @include('error_banner', ['message' => $message])
@@ -9,7 +9,7 @@
 
 <div class="form-group mb-3">
     <label for="email">Email</label>
-    <input type="text" name="email" value="{{ old('email') }}" class="form-control">
+    <input type="text" name="email" value="{{ old('email') ?? $customer->email }}" class="form-control">
 </div>
 @error('email')
     @include('error_banner', ['message' => $message])
