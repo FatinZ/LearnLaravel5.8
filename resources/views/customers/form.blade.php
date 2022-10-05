@@ -19,8 +19,9 @@
     <label for="active">Status</label>
     <select name="status" id="status" class="form-select">
         <option disabled selected>Select customer status</option>
-        <option value="1">Active</option>
-        <option value="0">Inactive</option>
+        @foreach ($customer->activeOptions() as $keyOption => $valueOption)
+            <option value="{{ $keyOption }}" {{ $customer->status == $valueOption ? 'selected' : '' }}>{{ $valueOption }}</option>
+        @endforeach
     </select>
 </div>
 @error('status')
@@ -32,7 +33,7 @@
     <select name="company_id" id="company_id" class="form-select">
         <option disabled selected>Select company</option>
         @foreach ($companies as $c)
-            <option value="{{ $c->id }}">{{ $c->name }}</option>
+            <option value="{{ $c->id }}" {{ $c->id == $customer->company_id ? 'selected' : '' }}>{{ $c->name }}</option>
         @endforeach
     </select>
 </div>

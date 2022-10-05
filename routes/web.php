@@ -20,10 +20,14 @@ Route::get('/', function () {
 Route::view('contact', 'contact');
 Route::view('about', 'about');
 
-Route::get('/customers', 'CustomerController@index');
-Route::get('/customers/create', 'CustomerController@create');
-Route::post('/customers', 'CustomerController@store');
-Route::get('/customers/{customer}', 'CustomerController@show');
-Route::get('/customers/{customer}/edit', 'CustomerController@edit');
-Route::patch('/customers/{customer}', 'CustomerController@update');
+// Route::get('/customers', 'CustomerController@index');
+// Route::get('/customers/create', 'CustomerController@create');
+// Route::post('/customers', 'CustomerController@store');
+// Route::get('/customers/{customer}', 'CustomerController@show');
+// Route::get('/customers/{customer}/edit', 'CustomerController@edit');
+// Route::patch('/customers/{customer}', 'CustomerController@update');
+// Route::delete('/customers/{customer}', 'CustomerController@destroy');
+
+// All above may be condensed into this one single line because we followed the convention
+Route::resource('/customers', 'CustomerController');
 
