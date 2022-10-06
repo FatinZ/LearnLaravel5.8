@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,3 +34,11 @@ Route::view('about', 'about');
 // All above may be condensed into this one single line because we followed the convention
 Route::resource('/customers', 'CustomerController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
