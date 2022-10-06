@@ -11,11 +11,24 @@
 
 <div class="row">
     <div class="col-12">
-        <form action="{{ route('customers.store') }}" method="POST" class="pb-3">
+        <form action="{{ route('customers.store') }}" method="POST" class="pb-3" id="addCust">
             @include('customers.form')
 
-            <button type="submit" class="btn btn-outline-success">Add Customer</button>
+            <button type="submit" class="btn btn-outline-success" id="btnSubmit">Add Customer</button>
         </form>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    $('#addCust').submit(function() {
+        var btn = $(this).find('#btnSubmit');
+        btn.prop('disabled', true);
+        btn.prop("class", "btn btn-success");
+        btn.html(
+            '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Adding...'
+        );
+    });
+</script>
 @endsection
