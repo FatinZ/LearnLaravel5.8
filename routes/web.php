@@ -18,10 +18,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/contact', 'ContactFormController@create');
-Route::post('/contact', 'ContactFormController@store');
+Route::get('/contact', 'ContactFormController@create')->name('contact.create');
+Route::post('/contact', 'ContactFormController@store')->name('contact.store');
 
-Route::view('about', 'about')->middleware('test');
+Route::view('about', 'about')->middleware('test')->name('about');
 
 // Route::get('/customers', 'CustomerController@index');
 // Route::get('/customers/create', 'CustomerController@create');
@@ -34,10 +34,6 @@ Route::view('about', 'about')->middleware('test');
 // All above may be condensed into this one single line because we followed the convention
 Route::resource('/customers', 'CustomerController');
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

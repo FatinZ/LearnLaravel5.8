@@ -15,9 +15,9 @@ class TestMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(now()->format('s') % 2) {
+        // if(now()->format('s') % 2) {
             return $next($request);
-        }
-        return response('Not Allowed');
+        // }
+        // return response('Not Allowed');
     }
 }
