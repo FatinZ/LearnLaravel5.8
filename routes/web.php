@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('/contact', 'ContactFormController@create');
 Route::post('/contact', 'ContactFormController@store');
 
-Route::view('about', 'about');
+Route::view('about', 'about')->middleware('test');
 
 // Route::get('/customers', 'CustomerController@index');
 // Route::get('/customers/create', 'CustomerController@create');
