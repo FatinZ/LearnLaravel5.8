@@ -13,8 +13,16 @@
     @include('nav')
 
     <div class="container">
+        @if (session()->has('message'))
+            <div class="alert alert-success" role="alert">
+                <strong>Success!</strong> {{ session()->get('message') }}
+            </div>
+        @endif
+
         @yield('content')
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    @yield('script')
 </body>
 </html>
