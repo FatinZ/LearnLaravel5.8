@@ -36,6 +36,8 @@ class CustomerController extends Controller
 
     public function store()
     {
+        $this->authorize('create', Customer::class);
+
         // dd(request('name', 'no name'));
         $customer = Customer::create($this->validateRequest());
 
@@ -54,6 +56,8 @@ class CustomerController extends Controller
 
         /* BUT if you put Customer in param, it will use route-model binding
         ** so no need for extra codes */
+
+        $this->authorize('view', $customer);
 
         return view('customers.show', compact('customer'));
     }
@@ -75,6 +79,8 @@ class CustomerController extends Controller
 
     public function destroy(Customer $customer)
     {
+        $this->authorize('delete', $customer);
+
         $customer->delete();
         return redirect('/customers');
     }
