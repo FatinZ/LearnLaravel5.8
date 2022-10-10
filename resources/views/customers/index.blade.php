@@ -20,4 +20,10 @@
         <div class="col-2">{{ $c->status }}</div>
     </div>
 @endforeach
+
+<div class="row">
+    <div class="col-12 pt-5">
+        {{ $customers->links() }}
+    </div>
+</div>
 @endsection
