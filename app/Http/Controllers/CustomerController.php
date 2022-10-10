@@ -7,6 +7,7 @@ use App\Customer;
 use Illuminate\Http\Request;
 use App\Mail\WelcomeNewUserMail;
 use Illuminate\Support\Facades\Mail;
+use Intervention\Image\Facades\Image;
 use App\Events\NewCustomerRegisteredEvent;
 
 class CustomerController extends Controller
@@ -95,6 +96,9 @@ class CustomerController extends Controller
             $customer->update([
                 'image' => request()->image->store('uploads', 'public')
             ]);
+
+            $image = Image::make(public_path('storage/' . $customer->image))->fit(300, 300);
+            $image->save();
         }
     }
 }

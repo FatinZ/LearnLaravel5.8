@@ -28,7 +28,7 @@
 @if ($customer->image)
     <div class="row">
         <div class="col-12">
-            <img src="{{ asset('storage/' . $customer->image) }}" alt="Profile Picture" class="img-thumbnail rounded" style="max-width: 300px">
+            <img src="{{ asset('storage/' . $customer->image) }}" alt="Profile Picture" class="img-thumbnail rounded">
         </div>
     </div>
 @endif
