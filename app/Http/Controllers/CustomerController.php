@@ -38,6 +38,8 @@ class CustomerController extends Controller
         // dd(request('name', 'no name'));
         $customer = Customer::create($this->validateRequest());
 
+        $this->storeImage($customer);
+
         event(new NewCustomerRegisteredEvent($customer));
 
         return redirect('/customers');
@@ -65,6 +67,8 @@ class CustomerController extends Controller
     {
         $customer->update($this->validateRequest());
 
+        $this->storeImage($customer);
+
         return redirect(url('/customers\/') . $customer->id);
     }
 
@@ -78,10 +82,19 @@ class CustomerController extends Controller
     {
         return request()->validate([
             'name' => 'bail|required|min:3',
-            // 'optionalvalue' => 'nullable|min:3'
             'email' => 'required|email',
             'status' => 'required',
-            'company_id' => 'required'
+            'company_id' => 'required',
+            'image' => 'nullable|file|image|max:5000'
         ]);
+    }
+
+    private function storeImage(Customer $customer)
+    {
+        if(request()->hasFile('image')) {
+            $customer->update([
+                'image' => request()->image->store('uploads', 'public')
+            ]);
+        }
     }
 }

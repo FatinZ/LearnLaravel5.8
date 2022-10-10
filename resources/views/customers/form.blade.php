@@ -40,3 +40,11 @@
 @error('company_id')
     @include('error_banner', ['message' => $message])
 @enderror
+
+<div class="form-group mb-3 d-flex flex-column">
+    <label for="image">Profile Image</label>
+    <input type="file" name="image" class="py-2">
+</div>
+@error('image')
+    @include('error_banner', ['message' => $message])
+@enderror
